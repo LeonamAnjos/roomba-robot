@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    margin: 0 2%;
+    height: 800px;
+    border: 2px dashed;
+}
+
+.grid {
+    border: 2px solid;
+    min-height: 600px;
+    min-width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.item {
+    flex: 1;
+    border: 1px solid;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+}
