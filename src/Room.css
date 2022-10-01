@@ -1,14 +1,14 @@
 .container {
     display: flex;
     margin: 0 2%;
-    height: 800px;
+    padding: 2%;
     border: 2px dashed;
 }
 
 .grid {
     border: 2px solid;
-    min-height: 600px;
-    min-width: 600px;
+    min-height: 400px;
+    min-width: 400px;
     margin: auto;
     display: flex;
     flex-direction: row;
@@ -27,5 +27,33 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: xx-large;
+    font-size: x-large;
 }
+
+.command {
+    margin: 0 10px;
+    height: 40px;
+    font-size: large;
+}
+
+
+/* button {
+    border: 1px solid #444444;
+    background-color: #0099cc;
+    color: #ffffff;
+    padding: 5px 10px;
+  }
+
+  button:hover {
+    border: 1px solid #0099cc;
+    background-color: #00aacc;
+    color: #ffffff;
+    padding: 5px 10px;
+  }  */
+
+  button:disabled {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+  }
+
