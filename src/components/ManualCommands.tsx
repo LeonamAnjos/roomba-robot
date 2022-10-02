@@ -4,18 +4,20 @@ import { RoombaContext } from "../context/RoombaContext";
 const ManualCommands = () => {
   const roomba = useContext(RoombaContext);
 
+  const disabled = roomba.getRobotStatus() !== "Charging";
+
   const moveFowardHandle = () => roomba.moveForward();
   const rotateHandle = () => roomba.rotate();
 
   return (
     <>
       <div class="row">
-        <button class="command" onClick={moveFowardHandle}>
+        <button class="command" disabled={disabled} onClick={moveFowardHandle}>
           ⏩ Move Foward
         </button>
       </div>
       <div class="row">
-        <button class="command" onClick={rotateHandle}>
+        <button class="command" disabled={disabled} onClick={rotateHandle}>
           🔁 Rotate
         </button>
       </div>

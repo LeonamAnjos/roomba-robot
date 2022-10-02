@@ -5,6 +5,21 @@ import { Direction } from "../model/direction";
 
 type RobotImage = "👉" | "👇" | "👈" | "👆" | "";
 
+export type RobotStatus =
+  | "Cleaning"
+  | "Paused"
+  | "Moving to the dock"
+  | "Charging";
+
+export interface RoombaState {
+  isAt: ({ x, y }: Coordinates) => boolean;
+  robotPicture: () => RobotImage;
+  rotate: () => void;
+  moveForward: () => void;
+  getRobotStatus: () => RobotStatus;
+  setRobotStatus: (status: RobotStatus) => void;
+}
+
 const RoombaContext = createContext<RoombaState>({
   isAt: (): boolean => false,
   robotPicture: (): RobotImage => "",
@@ -14,18 +29,15 @@ const RoombaContext = createContext<RoombaState>({
   moveForward: (): void => {
     /* EMPTY */
   },
+  getRobotStatus: (): RobotStatus => "Charging",
+  setRobotStatus: (): void => {
+    /* EMPTY */
+  },
 });
 
 interface RoombaContextProviderProps {
   children?: ComponentChildren;
   size: number;
-}
-
-interface RoombaState {
-  isAt: ({ x, y }: Coordinates) => boolean;
-  robotPicture: () => RobotImage;
-  rotate: () => void;
-  moveForward: () => void;
 }
 
 const RoombaContextProvider = ({
@@ -34,9 +46,10 @@ const RoombaContextProvider = ({
 }: RoombaContextProviderProps) => {
   const [position, setPosition] = useState<Coordinates>({ x: 1, y: 1 });
   const [direction, setDirection] = useState<Direction>(Direction.EAST);
+  const [robotStatus, setRobotStatus] = useState<RobotStatus>("Charging");
 
   const state: RoombaState = {
-    isAt: ({ x, y }: Coordinates): boolean => {
+    isAt({ x, y }: Coordinates): boolean {
       return position.x == x && position.y === y;
     },
 
@@ -84,6 +97,14 @@ const RoombaContextProvider = ({
       } else {
         setPosition(newPosition);
       }
+    },
+
+    getRobotStatus(): RobotStatus {
+      return robotStatus;
+    },
+
+    setRobotStatus(newStatus: RobotStatus): void {
+      setRobotStatus(newStatus);
     },
   };
 

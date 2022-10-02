@@ -36,24 +36,8 @@
     font-size: large;
 }
 
-
-/* button {
-    border: 1px solid #444444;
-    background-color: #0099cc;
-    color: #ffffff;
-    padding: 5px 10px;
-  }
-
-  button:hover {
-    border: 1px solid #0099cc;
-    background-color: #00aacc;
-    color: #ffffff;
-    padding: 5px 10px;
-  }  */
-
-  button:disabled {
+button:disabled {
     border: 1px solid #999999;
     background-color: #cccccc;
     color: #666666;
-  }
-
+}

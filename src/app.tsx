@@ -1,3 +1,4 @@
+import { AutomatedCommands } from "./components/AutomatedCommands";
 import { ManualCommands } from "./components/ManualCommands";
 import { Room } from "./components/Room";
 import { RoombaContextProvider } from "./context/RoombaContext";
@@ -13,6 +14,7 @@ export function App() {
       </div>
       <div class="container">
         <ManualCommands />
+        <AutomatedCommands />
       </div>
     </RoombaContextProvider>
   );
