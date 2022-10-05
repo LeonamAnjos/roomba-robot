@@ -48,6 +48,13 @@ const RoombaContextProvider = ({
   const [direction, setDirection] = useState<Direction>(Direction.EAST);
   const [robotStatus, setRobotStatus] = useState<RobotStatus>("Charging");
 
+  if (Math.max(position.x, position.y) > size) {
+    setPosition({
+      x: Math.min(position.x, size),
+      y: Math.min(position.y, size),
+    });
+  }
+
   const state: RoombaState = {
     isAt({ x, y }: Coordinates): boolean {
       return position.x == x && position.y === y;
